@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stay updated with the latest weather forecasts, tips, and updates on our weather-finding website.">
+    <title>Weather App - Home Page</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/cloudy.png' %}" type="image/x-icon">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM3Do6xXb5C0pLU5z7z0jFw5dEl5Ez1qcy+ta96" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+<style>
+
+.gallery img {
+  transition: all 0.3s ease;
+  padding: 30px;
+  justify-content: space-between;
+}
+
+.gallery img:hover {
+  transform: scale(1.15);
+  justify-content: space-between;
+  transition: all 0.6s;
+  filter: brightness(1.1);
+}
+</style>
+</head>
+<body class="bg-light">
+    {% block body %}
+    
+    <header id="homepage-bg">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-bg">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-3 text-dark fw-bold text-white" href="#">
+                    Weather App
+                    <img src="{% static 'images/3859138_cloud_forecast_moon_reflection_weather_icon.png' %}" height="40" width="40" alt="Weather App Icon">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item text-white">
+                            <a class="nav-link text-white fw-bold" href="{% url 'whether' %}">Find Forecast</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-bold" href="#">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-bold" href="#section-1">Contact us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="home-txt" class="container text-center bg-transparent">
+            <h1 class="ms-2 text-start text-white">Welcome to the</h1>
+              <h1 class=" weather-4 text-white">Weather</h1>
+            <h1 class="ms-3 text-end text-white" style="margin-right: 140px;">App</h1>
+            <p class="text-white mt-1">Stay updated with the latest weather forecasts, tips, and updates.</p>
+            <a href="{% url 'about' %}" class="btn btn-primary">About Us</a>
+          </div>
+          </header>
+<div class="measure">
+    <div class="container-fluid bg-white py-5 px-2 full-width-container">
+        <h1 class="text-dark mt-4 mb-4 text-center fw-bolder">Measures to Take</h1>
+        <div class="underline">
+            <img src="/static/images/underline.png" alt="" width="auto" height="50px" style="margin-left: 515px; margin-top: -20px;">
+        </div>
+        <div class="row justify-content-center">
+            <!-- Stay Hydrated Card -->
+            <div class="col-md-3">
+                <div class="card mx-2 mt-4">
+                    <img src="{% static 'images/drink-5011975.jpg' %}" class="card-img-top" alt="Stay Hydrated">
+                    <div class="card-body info">
+                        <h5 class="card-title text-warning">Stay Hydrated</h5>
+                        <p class="card-text text-info">In hot weather, it's crucial to drink plenty of water to avoid dehydration. Carry a water bottle and take regular sips throughout the day.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Dress Appropriately Card -->
+            <div class="col-md-3">
+                <div class="card mx-2 mt-4">
+                    <img src="{% static 'images/child-5943325.jpg' %}" class="card-img-top" alt="Dress Appropriately">
+                    <div class="card-body info">
+                        <h5 class="card-title text-warning">Dress Appropriately</h5>
+                        <p class="card-text text-info">Check the weather forecast and dress accordingly. Layer up in cold conditions and opt for light, breathable fabrics when it's hot.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Seek Shelter Card -->
+            <div class="col-md-3">
+                <div class="card mx-2 mt-4" style="height: 250px;">
+                    <img src="{% static 'images/man-3581659.jpg' %}" class="card-img-top" alt="Seek Shelter">
+                    <div class="card-body info">
+                        <h5 class="card-title text-warning">Seek Shelter</h5>
+                        <p class="card-text text-info">During severe weather warnings, find a safe place indoors. Stay away from windows and avoid using electrical appliances.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background-1">
+    <!-- Daily Weather Forecast -->
+    <h1 class="fs-1 text-center  fw-bolder text-white" style="padding-top: 30px; margin-left: 20px;">Daily Weather Forecast Update News</h1>
+    <div class="container-fluid" style="padding-top: 50px;">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <div class="card bg-transparent border-0">
+                    <h3 class="source">WION</h3>
+                    <iframe width="360" height="315" src="https://www.youtube.com/embed/LcXHQxtz2aU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>         
+                </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <div class="card bg-transparent border-0">
+                    <h3 class="source">WION</h3>
+                    <iframe width="360" height="315" src="https://www.youtube.com/embed/x6osrEGZVMo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <div class="card bg-transparent border-0">
+                    <h3 class="source">WION</h3>
+                    <iframe width="360" height="315" src="https://www.youtube.com/embed/EZAc2Uq58Yg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="background-2 bg-white">
+    <!-- Weather in Pictures -->
+    <h1 class="fs-1 text-center mt-5 fw-bolder text-dark" style="padding-top: 30px;">Weather in Pictures</h1>
+    <div class="underline">
+        <img src="/static/images/underline.png" alt="" width="auto" height="50px" style="margin-left: 513px;">
+    </div>
+    <p class="text-dark px-4 fw-bold" style="padding-top: 30px;">The 'Recent Search Weather' section displays the latest weather information for the cities you have recently searched. Stay up-to-date with the weather conditions of your preferred cities with this section.</p>
+    <div class="container">
+        <div class=" row gallery  ">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="https://uiparadox.co.uk/public/templates/thunderpro/assets/media/gallery/img-7.png" class="img-fluid shadow-1-strong rounded" alt="Image 7" >
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="https://uiparadox.co.uk/public/templates/thunderpro/assets/media/gallery/img-8.png" class="img-fluid shadow-1-strong rounded" alt="Image 8">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="https://uiparadox.co.uk/public/templates/thunderpro/assets/media/gallery/img-10.png" class="img-fluid shadow-1-strong rounded" alt="Image 10">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4" id="image-3">
+            <img src="https://uiparadox.co.uk/public/templates/thunderpro/assets/media/gallery/img-11.png" class="img-fluid shadow-1-strong rounded" alt="Image 11">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="https://images.pexels.com/photos/757239/pexels-photo-757239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-fluid shadow-1-strong rounded" alt="Pexels Image">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%D" class="img-fluid shadow-1-strong rounded" alt="Unsplash Image">
+          </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Contact Form -->
+    <div class="container-fluid" id="section-1">
+        <div class="row justify-content-center">
+            <h1 class="fs-1 mt-5 mb-4 fw-bold text-white">Contact Us</h1>
+            <div class="col">
+                <div class="contact p-4  shadow-sm text-white">
+                    <form id="contact-form" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name-1" class="form-label">
+                                <i class="bi bi-file-earmark-person"></i> Name
+                            </label>
+                            <input type="text" name="name" id="name-1" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email-1" class="form-label">
+                                <i class="bi bi-mailbox"></i> Email Address
+                            </label>
+                            <input type="email" name="email" id="email-1" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="number-1" class="form-label">
+                                <i class="bi bi-telephone"></i> Phone Number
+                            </label>
+                            <input type="tel" name="number" id="number-1" class="form-control mb-5">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+
+    <!-- Footer -->
+    <footer id="footer-bg" class="justify-content-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-mid-12 text-center">
+                    <a href="#"><img src="{% static 'images/twitter.png' %}" alt="Twitter" width="16" height="16"></a>
+                    <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook" width="16" height="16"></a>
+                    <p class="text-dark">Copyright © 2024 All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
+    {% endblock %}
+</body>
+</html>

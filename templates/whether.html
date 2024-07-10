@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <title>Weather Page</title>
+    <link rel="icon" href="{% static 'images/cloudy.png' %}" type="image/x-icon">
+</head>
+<body id="body-2">
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <nav id="head-1" class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-bg">
+        <div class="container-fluid">
+            <a class="navbar-brand mx-3 text-dark fw-bold" href="#">
+                Weather App
+                <img src="{% static 'images/3859138_cloud_forecast_moon_reflection_weather_icon.png' %}" height="40" width="40" alt="Weather App Icon">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto mx-2">
+                    <a class="nav-item nav-link text-dark fw-bold" href="{% url 'home' %}">Home</a>
+                    <a class="nav-item nav-link text-dark fw-bold" href="{% url 'whether' %}">Weather</a>
+                    <a class="nav-item nav-link text-dark fw-bold" href="#section-1">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <br><br><br>
+        <form method="post" class="col-md">
+            {% csrf_token %}
+            <div id="jumbotron" class="jumbotron text-center  ">
+                <h1 >Uncover Local Weather</h1>
+            </div>
+            <div class="container input-group bg-transparent">
+                <input type="text" class="form-control bg-transparent border-0 custom-input text-dark" name="city" placeholder="Choose Your City ...">
+                <div class="input-group-btn" >
+                    <button type="submit" class="btn btn-warning">Check</button>
+                </div>
+            </div>
+        </form>
+    </nav>
+    
+    <br><br>
+    
+    <div class="container-fluid bg-transparent text-center text-light">
+        {% if city_name %}
+        <div class="city-name container-fluid">
+            <h1 style="font-size: 50px;">{{ city_name }}</h1>
+        </div>
+          
+        <div class="row">
+            <!-- Coordinates Card -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Coordinates</h5>
+                        <p class="card-text">Longitude: <strong>{{ longitude }}</strong></p>
+                        <p class="card-text">Latitude: <strong>{{ latitude }}</strong></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Weather Card -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Weather</h5>
+                        <p class="card-text">Main: <strong>{{ main }}</strong></p>
+                        <p class="card-text">Description: <strong>{{ description }}</strong></p>
+                        <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Weather Icon" class="weather-icon">
+                    </div>
+                </div>
+            </div>
+            <!-- Temperature Card -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Temperature</h5>
+                        <p class="card-text">Temperature: <strong>{{ temp }} &deg</strong></p>
+                        <p class="card-text">Feels Like: <strong>{{ feels_like }} &deg</strong></p>
+                        <p class="card-text">Minimum Temperature: <strong>{{ temp_min }} &deg</strong></p>
+                        <p class="card-text">Maximum Temperature: <strong>{{ temp_max }} &deg</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div class="row">
+            <!-- Pressure & Humidity Card -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Pressure & Humidity</h5>
+                        <p class="card-text">Pressure: <strong>{{ pressure }} hPa</strong></p>
+                        <p class="card-text">Humidity: <strong>{{ humidity }} %</strong></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Wind Card -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Wind</h5>
+                        <p class="card-text">Speed: <strong>{{ speed }} m/s</strong></p>
+                        <p class="card-text">Direction: <strong>{{ deg }} &deg;</strong></p>
+                        <p class="card-text">Gust: <strong>{{ gust }} m/s</strong></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Rain Card -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Rain</h5>
+                        <p class="card-text">Rain (1h): <strong>{{ rain }} mm</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Additional Information Card -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">clearness</h5>
+                        <p class="card-text">Visibility: <strong>{{ visibility }} m</strong></p>
+                        <p class="card-text">Cloudiness: <strong>{{ clouds }} %</strong></p>
+                    </div>
+                </div>
+            </div>
+            <!-- System Information Card -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Rays Time</h5>
+                        <p class="card-text">Sunrise: <strong>{{ sunrise }}</strong></p>
+                        <p class="card-text">Sunset: <strong>{{ sunset }}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    {% block content %}
+    {% endblock %}
+
+    {% if messages %}
+    <script>
+        window.addEventListener('load', function() {
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        });
+    </script>
+    {% endif %}
+    <footer id="footer-bg justify-content-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-mid-12 text-center">
+                    <a href="#"><img src="/static/images/twitter.png" alt="Twitter" width="16" height="16"></a>
+                    <a href="#"><img src="/static/images/facebook.png" alt="Facebook" width="16" height="16"></a>
+                    <p class="text-dark">Copyright © 2024 All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('loading-screen').style.display = 'none';
+        });
+
+        function simulateLoading() {
+            return new Promise(resolve => setTimeout(resolve, 2000)); // 2 second delay
+        }
+
+        // Hide loading screen after simulated delay
+        window.addEventListener('DOMContentLoaded', async function() {
+            await simulateLoading();
+            document.getElementById('loading-screen').style.display = 'none';
+        });
+    </script>
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    </script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

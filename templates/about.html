@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM3Do6xXb5C0pLU5z7z0jFw5dEl5Ez1qcy+ta96" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      
+    </style>
+</head>
+<body>
+   
+    <header class="hero-section text-center" id="weather-2">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-bg">
+        <div class="container-fluid">
+            <a class="navbar-brand mx-3 text-light fw-bold" href="#">
+                Weather App
+                <img src="/static/images/3859138_cloud_forecast_moon_reflection_weather_icon.png" height="40" width="40" alt="Weather App Icon">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto mx-2">
+                    <a class="nav-item nav-link text-light fw-bold" href="{% url 'home' %}">Home</a>
+                    <a class="nav-item nav-link text-light fw-bold" href="{% url 'whether' %}">Weather</a>
+                    <a class="nav-item nav-link text-light fw-bold" href="{% url 'whether' %}">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+        <div class="container">
+            <h1 class="display-2 fw-bolder">About Our Weather App</h1>
+            <p class="lead fw-bold">Delivering accurate weather forecasts at your fingertips</p>
+        </div>
+    </header>
+      <div class="color-bg">
+    <main class="container my-5">
+        <section class="row mb-5">
+            <div class="col-md-6">
+                <h2 class="fw-bolder">Our Mission</h2>
+                <p class="fw-bold">At Weather App, we strive to provide the most accurate and up-to-date weather information to help you plan your day with confidence. Our team of meteorologists and developers work tirelessly to bring you a seamless weather forecasting experience.</p>
+            </div>
+            <div class="col-md-6">
+                <h2 class="fw-bolder">What's Inside</h2>
+                <ul class="list-group">
+                    <li class="list-group-item text-white" style="background-color: #3E4E19;">Real-time weather updates</li>
+                    <li class="list-group-item text-white" style="background-color: #B2854C;">7-day forecasts</li>
+                    <li class="list-group-item text-white" style="background-color: #858652;">Severe weather alerts</li>
+                    <li class="list-group-item text-white" style="background-color: #6D7577;">Interactive radar maps</li>
+                    <li class="list-group-item text-white" style="background-color: #B2854C;">Customizable notifications</li>
+                </ul>
+            </div>
+            </section>
+
+        <section class="row text-center mb-5">
+            <h2 class="col-12 mb-4 fw-bolder">Key Features</h2>
+            <div class="col-md-4">
+                <div class="feature-icon">🌡️</div>
+                <h3>Accurate Forecasts</h3>
+                <p>Powered by advanced algorithms and real-time data</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-icon">📱</div>
+                <h3>User-Friendly Interface</h3>
+                <p>Intuitive design for easy navigation and quick access to information</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-icon">🌎</div>
+                <h3>Global Coverage</h3>
+                <p>Weather information for locations worldwide</p>
+            </div>
+        </section>
+
+        <section class="mb-5" style="padding-top: 40px;">
+            <h2 class="text-center mb-4 fw-bolder">Our Location</h2>
+            <div class="map-container" style="margin-left:80px;">
+                <!-- Replace the src URL with your actual Google Maps embed URL -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15691.80459053815!2d76.26061247457923!3d10.504514082292445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7eff8a86050b3%3A0x4e73c803f0d76057!2sNadathara%2C%20Kerala!5e0!3m2!1sen!2sin!4v1720350494901!5m2!1sen!2sin" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>           
+             </div>
+        </section>
+
+        <section class="text-center" style="padding-top: 70px;">
+            <h2 class="mb-4">Get in Touch</h2>
+            <p>Have questions or feedback? We'd love to hear from you!</p>
+            <a href="{% url 'home' %}#section" class="btn btn-primary">Contact Us</a>
+        </section>
+    </main>
+
+     <!-- Footer -->
+     <footer id="footer-bg justify-content-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-mid-12 text-center">
+                    <a href="#"><img src="/static/images/twitter.png" alt="Twitter" width="16" height="16"></a>
+                    <a href="#"><img src="/static/images/facebook.png" alt="Facebook" width="16" height="16"></a>
+                    <p class="text-dark">Copyright © 2024 All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
