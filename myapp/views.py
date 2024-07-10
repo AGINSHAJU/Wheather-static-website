@@ -7,7 +7,7 @@ import requests
 from datetime import datetime
 import json
 
-def home(request):
+def index(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -23,10 +23,10 @@ def home(request):
         except Exception as e:
             messages.error(request, f"An error occurred: {e}")
 
-        return redirect('home')
+        return redirect('index')
 
 
-    return render(request, 'home.html')
+    return render(request, 'index.html')
 
 def whether(request):
     data = {}
